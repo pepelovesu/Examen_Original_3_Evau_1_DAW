@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.etg.tierno.daw.examen.vera.view.EmpresaViewController">
+   <children>
+      <Button fx:id="btGenerarInforme" layoutX="417.0" layoutY="131.0" mnemonicParsing="false" text="Generar Informe" />
+      <Button fx:id="btInsertarTrabajador" layoutX="44.0" layoutY="286.0" mnemonicParsing="false" text="Insertar Trabajador" />
+      <Label fx:id="lbDNI" layoutX="77.0" layoutY="123.0" text="DNI:" />
+      <Label fx:id="lbNombre" layoutX="66.0" layoutY="77.0" text="Nombre:" />
+      <Label fx:id="lbSueldo" layoutX="55.0" layoutY="173.0" text="Sueldo($):" />
+      <Label fx:id="lbPuesto" layoutX="57.0" layoutY="233.0" text="Puesto:" />
+      <TextField layoutX="129.0" layoutY="73.0" />
+      <TextField layoutX="129.0" layoutY="119.0" />
+      <TextField layoutX="129.0" layoutY="169.0" />
+      <MenuButton fx:id="mbPuesto" layoutX="137.0" layoutY="231.0" mnemonicParsing="false" text="INDICA PUESTO">
+        <items>
+          <MenuItem fx:id="mbDirector" mnemonicParsing="false" text="DIRECTOR" />
+          <MenuItem fx:id="mbExperto" mnemonicParsing="false" text="EXPERTO" />
+            <MenuItem fx:id="mbDesarrollador" mnemonicParsing="false" text="DESARROLLADOR" />
+            <MenuItem fx:id="mbJunior" mnemonicParsing="false" text="JUNIOR" />
+        </items>
+      </MenuButton>
+   </children>
+</AnchorPane>

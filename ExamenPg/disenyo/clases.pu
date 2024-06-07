@@ -1,0 +1,175 @@
+@startuml
+
+package model{
+
+    package entities{
+
+        interface Gestionable{
+            + add(trabajador: Trabajador): void
+            + del(trabajador: Trabajador): void
+            + generarInforme(trabajadores: List<Trabajador>): Informe
+        }
+
+        class Empresa{
+            - sector: String 
+        }
+        
+        class Informe{
+            - empresa: Empresa
+
+        }
+
+        interface Analisis{
+'           
+        }
+
+        interface AnalisisEmpresa{
+            + calcularMayorSueldoEmpresa(): double
+            + calcularMenorSueldoEmpresa(): double
+            + calcularMedioSueldoEmpresa(): double
+            + calcularVariacionMediaSueldoEmpresa(): double
+        }
+
+        interface AnalisisDirectora{
+            + calcularMayorSueldoDirectora(): double
+            + calcularMenorSueldoDirectora(): double
+        }
+
+        interface AnalisisExperto{  
+            + calcularMayorSueldoExperto(): double
+            + calcularMenorSueldoExperto(): double
+        }
+
+        interface AnalisisDesarrollador{      
+            + calcularMayorSueldoDesarrolladora(): double
+            + calcularMenorSueldoDesarrolladora(): double    
+        }
+
+        interface AnalisisJunior{  
+            + calcularMayorSueldoJunior(): double
+            + calcularMenorSueldoJunior(): double        
+        }
+
+        abstract class Trabajador{
+            - nombre: String
+            - dni: String
+            # sueldo: int
+            # puesto: Puesto
+
+        }
+
+        package PuestoTrabajos{
+
+            class Directora{
+            }
+
+            class Experto{
+            }
+
+            class Desarrolladora{
+            }
+        
+            class Junior{
+            }
+
+            enum Puesto{
+                DIRECTORA, EXPERTO, DESARROLLADORA, JUNIOR
+            }
+
+        }
+
+        Empresa ..|> Gestionable
+        Empresa  o-- Trabajador
+        Trabajador <|-- Directora
+        Trabajador <|-- Experto
+        Trabajador <|-- Desarrolladora
+        Trabajador <|-- Junior
+
+        Informe ..|> Analisis
+
+        Analisis --|> AnalisisEmpresa
+        Analisis --|> AnalisisDirector
+        Analisis --|> AnalisisExperto
+        Analisis --|> AnalisisDesarrollador
+        Analisis --|> AnalisisJunior
+    }
+    
+    package dao{
+
+        interface BaseDatos{
+
+        }
+
+        class SQLiteBD{
+
+        }
+        class OracleDB{
+
+        }
+        class MariaDB{
+
+        }
+
+        class FactoryDB{
+            + {static} obtner(modo: Modo): BaseDatos
+        }
+
+        enum Modo{
+            SLQLITE, MARIADB, ORACLE, MUCK
+        }
+        abstract class BaseDatosConnection{
+            # con: Connection
+            - setCon(con: Connection): Connection
+
+        }
+
+        BaseDatos <|.. BaseDatosConnection
+        BaseDatosConnection <|-- SQLiteBD
+        BaseDatosConnection <|-- OracleDB
+        BaseDatosConnection <|-- MariaDB
+    }
+
+    package util{
+
+        package fic{
+            interface Fichero{
+                + leer(): byte[]
+                + escribir(datos: byte[]): 
+            }
+
+            class FicheroBinario{
+
+            }
+
+            FicheroBinario ..|> Fichero
+
+        }
+
+        package print{
+
+            interface Printable{
+
+            }
+
+            class Impresora{
+
+            }
+        }
+    }
+
+}
+
+package view{
+    class EmpresaViewController{
+
+    }
+}
+
+package controller{
+    class EmpresaController{
+
+    }
+}
+
+EmpresaController --> EmpresaViewController: use
+@enduml
